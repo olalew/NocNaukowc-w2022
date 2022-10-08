@@ -1,0 +1,36 @@
+<div class="container">
+
+    <div class="row mb-4">
+        <div class="col-md-12 col-12 col-sm-12 form-group">
+            <label for="style">Wybierz Zdjęcie</label>
+            <select class="form-control" [(ngModel)]="imageName">
+                <optgroup label="Owoc lub warzywo">
+                   <option value="apple_golden">Złote Jabłko</option>
+                   <option value="apple_pink_lady">Jabłko Pink Lady</option>
+                   <option value="apple_red">Czerwone Jabłko</option>
+                   <option value="avocado">Awokado</option>
+                   <option value="banana">Banan</option>
+                   <option value="cherry">Wiśnia</option>
+                   <option value="dates">Daktyl</option>
+                   <option value="kiwi">Kiwi</option>
+                   <option value="lemon">Cytryna</option>
+                   <option value="mango">Mango</option>
+                   <option value="potatoe">Ziemiak</option>
+                   <option value="red_apple">Czerwone Jabłko</option>
+                   <option value="tomato">Pomidor</option>
+                   <option value="watermelon">Arbuz</option>
+
+                </optgroup>
+            </select>
+        </div>
+        <div class="col-12 col-sm-12 text-center mt-4 mb-4 pt-4">
+            <img src="assets/img/fruits/{{imageName}}.jpg" style="height: 100px;" />
+        </div>
+    </div>
+
+    <div class="row mt-4 px-0">
+        <div class="col-md-12 px-0 d-grid gap-2">
+            <button class="btn btn-success btn-block" (click)="selectImage()">Select Image</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div class="row mb-4">
+        <div class="col-md-12 col-12 col-sm-12 form-group">
+            <label for="style">Wybierz Styl</label>
+            <select class="form-control" [(ngModel)]="style">
+                <optgroup label="Ubezpieczenie">
+                   <option value="krzyk">Krzyk</option>
+                   <option value="monaliza">Monaliza</option>
+                   <option value="portret">Portret</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="col-12 col-sm-12 text-center mt-2 mb-2 pt-2">
+            <img src="assets/img/styles/{{style}}.jpg" style="height: 100px;" />
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12 col-12 col-sm-12 form-group">
+            <label for="style">Wybierz Zdjęcie</label>
+            <select class="form-control" [(ngModel)]="imageName">
+                <optgroup label="Owoc lub warzywo">
+                   <option value="coffee">Kawa</option>
+                   <option value="cat">Kotek</option>
+                   <option value="pustynia">Pustynia</option>
+                   <option value="gora">Góra</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="col-12 col-sm-12 text-center mt-4 mb-4 pt-4">
+            <img src="assets/img/transfer/{{imageName}}.jpg" style="height: 100px;" />
+        </div>
+    </div>
+
+    <div class="row mt-4 px-0">
+        <div class="col-md-12 px-0 d-grid gap-2">
+            <button class="btn btn-success btn-block" (click)="selectImage()">Select Image</button>
+        </div>
+    </div>
+</div>

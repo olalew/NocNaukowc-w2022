@@ -1,0 +1,128 @@
+<section id="style-transfer" style="background-color: rgb(18, 41, 83);">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Klasyfikacja Obrazu</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Z wykorzystaniem sieci neuronowej, dokonujemy klasyfikacji obrazu, co w praktyce oznacza, że celem aplikacji jest rozpoznanie jaki owoc lub warzywo znajduje się na wykonanym zdjęciu. Model został wytrenowany na 131 możliwych kategoriach
+                    owoców oraz warzyw.
+                </p>
+                <div class="row pt-4">
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/3_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Jabłko Braeburn</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/63_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Złote jabłko 1</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/4_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Morela</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/48_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Awokado</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/16_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Banan</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/30_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Borówka amerykańska</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/43_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Wiśnia</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/29_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Kokos</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/68_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Kukurydza</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/34_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Kiwi</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/59_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Pomarańcza</p>
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <img src="assets/img/226_100.jpg" style="height: 100px;" />
+                        <p class="text-faded mt-2">Ananas</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="style-transfer" style="background-color: rgb(49, 101, 199);">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Rozpoznaj Warzywo lub Owoc</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Zagrajmy z rozpoznawaniem warzyw i owoców. Poniższa aplikacja pozwala na zrobienie zdjęcia warzywu lub owocowi, oraz sklasyfikowanie. Zrób zdjęcie, i zobaczmy jak poradzi sobie z tym Data Science.
+                </p>
+
+                <button class="btn btn-primary mb-0" (click)="choosePhoto()">Wybierz zdjęcie</button>
+
+
+                <p class="text-faded mt-4 mb-4">Lub</p>
+
+                <button class="btn btn-primary mb-0" (click)="classify()">Zrób zdjęcie i klasyfikuj</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section [style]="'background-color:' + colors[i % 3] + ';' + 'padding: 2.5rem 0;'" *ngFor="let explanation of classifyResponse?.explanations; let i = index">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Wynik {{i + 1}}</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">{{explanation!.label}}
+                </p>
+                <div class="row pt-4">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <img src="assets/img/results/{{explanation!.label}}.jpg" style="height: 200px;" />
+                        <p class="text-faded mb-4 mt-2">Rezultat</p>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <img [src]="getSanitizedPath(classifyResponse!.original)" style="height: 200px; width: 200px;" />
+                        <p class="text-faded mb-4 mt-2">Oryginalne zdjęcie</p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <img [src]="getSanitizedPath(explanation!.image1)" style="height: 200px; width: 200px;" />
+                        <p class="text-faded mb-4 mt-2">Piksele, które w pozytywny sposób wpływają na wynik (bez tła)</p>
+                    </div>
+                    <!-- <div class="col-md-6 col-sm-12 col-12">
+                        <img [src]="getSanitizedPath(explanation!.image2)" style="height: 200px; width: 200px;" />
+                        <p class="text-faded mb-4 mt-2">Piksele, które w pozytywny sposób wpływają na wynik (z tłem)</p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <img [src]="getSanitizedPath(explanation!.image3)" style="height: 200px; width: 200px;" />
+                        <p class="text-faded mb-4 mt-2">Piksele, które w negatywny sposób wpływają na wynik (bez tła)</p>
+                    </div> -->
+                    <div class="col-md-12 col-sm-12 col-12 mt-4">
+                        <img [src]="getSanitizedPath(explanation!.heatmap)" style="height: 300px;" />
+                        <p class="text-faded mb-4 mt-2">Mapa ciepła</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,72 @@
+<section id="style-transfer" style="background-color: rgb(18, 41, 83);">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Transfer Stylu</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Transfer stylu pozwala na przeniesienie stylu z jednego obrazu na drugi przy zachowaniu struktury. W praktyce oznacza to, że np zdjęcie z budynkami, czy innymi elementami zostanie odwzorowane w stylu obrazu odniesienia, czyli np. w stylu
+                    obrazu "Krzyk" Edvarda Muncha. Za przykład posłużmy się obrazem "Krzyk" Edvarda Muncha jako obraz, z którego przekażemy styl.
+                </p>
+                <div class="row pt-4">
+                    <div class="col-md-4 col-sm-12 text-center">
+                        <img src="assets/img/krzyk.jpg" style="height: 350px;" />
+                        <p class="text-faded mb-4 mt-2">"Krzyk" Edvarda Muncha - obraz z którego styl będzie przekazywany</p>
+                    </div>
+                    <div class="col-md-4 col-sm-12 text-center">
+                        <img src="assets/img/politechnika.jpg" style="height: 350px;" />
+                        <p class="text-faded mb-4 mt-2">Zdjęcie z Politechniki Śląskiej</p>
+                    </div>
+                    <div class="col-md-4 col-sm-12 text-center">
+                        <img src="assets/img/politechnika_result.jpg" style="height: 350px;" />
+                        <p class="text-faded mb-4 mt-2">Resultat transferu stylu - Politechnika Śląska odwzorowana w stylu "Krzyku"</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="style-transfer" style="background-color: rgb(49, 101, 199);">
+    <!-- style="background-image: url('assets/img/unsplash.jpg')"-->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-lg-8 text-center mx-auto">
+                <h2 class="text-white section-heading">Graj z Transferem Stylu</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Zagrajmy z transferem stylu. Poniższa aplikacja pozwala na zrobienie sobie selfi, oraz odwzorowanie swojego selfie w dowolnie wybranym stylu. Zrób sobie selfie, wybierz styl i zobaczmy jak poradzi sobie z tym Data Science.
+                </p>
+
+                <button class="btn btn-primary mb-0" (click)="choosePhoto()">Wybierz zdjęcie</button>
+
+
+                <p class="text-faded mt-4 mb-4">Lub</p>
+
+                <button class="btn btn-primary mb-0" (click)="transferStyle()">Zrób zdjęcie i transferuj styl</button>
+
+                <!-- plugin do zdjęcia idzie tutaj -->
+                <!-- wybór jednego z dostępnych zdjęć referencyjnych 1 z n -->
+                <!-- guzik wygeneruj rezultat-->
+            </div>
+        </div>
+
+        <div class="row pt-4 mt-4" *ngIf="displayImage">
+            <div class="col-md-4 col-sm-12 text-center ">
+                <img [src]="image" style="height: 350px;"  *ngIf="!byName"/>
+                <img src="assets/img/transfer/{{name}}.jpg" style="height: 350px;" *ngIf="byName" />
+                <p class="text-faded mb-4 mt-2">Zdjęcie</p>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center">
+                <img src="assets/img/styles/{{style}}.jpg" style="height: 350px;" />
+                <p class="text-faded mb-4 mt-2">Zdjęcie referencyjne</p>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center">
+                <img [src]="path" style="height: 350px" />
+                <p class="text-faded mt-2 text-center">
+                    Rezultat transferu stylu
+                </p>
+                <a download="result.jpg" class="btn btn-primary mb-0" [href]="path">Pobierz</a>
+            </div>
+        </div>
+    </div>
+</section>
